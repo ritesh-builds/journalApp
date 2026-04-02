@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>11</java.version>
+			<sonar.organization>ritesh-builds</sonar.organization>  
 	</properties>
 
 	<dependencies>

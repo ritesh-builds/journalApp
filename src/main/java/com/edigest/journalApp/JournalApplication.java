@@ -8,11 +8,16 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.client.RestTemplate;
 
 @EnableTransactionManagement  //----->  yeh annotation unn sabhi methods ko dhoondega jinpe transaction likha hoga
 @SpringBootApplication
+@EnableScheduling
+@EnableKafka
 @EnableMongoRepositories(basePackages = "com.edigest.journalApp.repository") // Add this line
 public class JournalApplication {
 	public static void main(String[] args) {
@@ -25,6 +30,11 @@ public class JournalApplication {
 	@Bean
 	public PlatformTransactionManager falana(MongoDatabaseFactory dbFactory) {
 		return new MongoTransactionManager(dbFactory);
+	}
+
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
 	}
 }
 

@@ -25,6 +25,7 @@ public class JournalApplication {
 		ConfigurableEnvironment environment = context.getEnvironment();
 		System.out.println(environment.getActiveProfiles()[0]);
 //		System.out.println(environment.getActiveProfiles()[1]);
+		System.out.println("-----> TEST MONGO URI: " + System.getenv("MONGO_URI"));
 	}
 
 	@Bean

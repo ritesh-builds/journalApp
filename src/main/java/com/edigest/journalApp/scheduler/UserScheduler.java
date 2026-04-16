@@ -71,7 +71,10 @@ public class UserScheduler {
                         .build();
 
                 // 2. Data ko Kafka topic pe bhej do
-                kafkaTemplate.send("weekly-sentiments", sentimentData.getEmail(), sentimentData);
+                try {
+                    kafkaTemplate.send("weekly-sentiments", sentimentData.getEmail(), sentimentData);
+                } catch (Exception e) {
+                    emailService.sendEmail(sentimentData.getEmail(), "Sentiment for previous week", sentimentData.getSentiment());                }
             }
 //            String sentiment = sentimentAnalysisService.getSentiment(entry);
 //            emailService.sendEmail(user.getEmail(), "Sentiment for last 7 days...", sentiment);

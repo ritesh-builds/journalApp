@@ -1,0 +1,136 @@
+#spring:
+#  data:
+#    mongodb:
+#      uri: mongodb+srv://ritesh:ritesh8219@cluster0.0d5xay3.mongodb.net/journaldb
+#      database: journaldb
+#      auto-index-creation: true
+#  redis:
+#    uri: redis://default:zOwtxaNglixXTG0tNXvPp5qf0W5LfQLZ@redis-11926.crce217.ap-south-1-1.ec2.cloud.redislabs.com:11926
+#
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    username: riteshpeepal@gmail.com
+#    password: zympjabisbwjkhon
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#  kafka:
+#    bootstrap-servers: localhost:9092
+#
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#
+#    consumer:
+#      group-id: weekly-sentiment-group
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#  application:
+#    name: Journal App
+#
+#weather:
+#  api:
+#    key: d3ad957942874e1aa9862226261104
+#
+#server:
+#  port: 8080
+#  servlet:
+#    context-path: /journal
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      database: journaldb
+      auto-index-creation: true
+  redis:
+    uri: ${REDIS_URI}
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  kafka:
+    bootstrap-servers: ${KAFKA_URL}
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: SCRAM-SHA-256
+      sasl.jaas.config: 'org.apache.kafka.common.security.scram.ScramLoginModule required username="${KAFKA_USERNAME}" password="${KAFKA_PASSWORD}";'
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: weekly-sentiment-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+  application:
+    name: Journal App
+
+weather:
+  api:
+    key: ${WEATHER_API_KEY}
+
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: /journal
+
+
+#spring:
+#  data:
+#    mongodb:
+#      uri: ${MONGO_URI}
+#      database: journaldb
+#      auto-index-creation: true
+#  redis:
+#    uri: ${REDIS_URI}
+#
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    username: ${MAIL_USERNAME}
+#    password: ${MAIL_PASSWORD}
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#
+#  kafka:
+#    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    consumer:
+#      group-id: weekly-sentiment-group
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#
+#  application:
+#    name: Journal App
+#
+#weather:
+#  api:
+#    key: ${WEATHER_API_KEY}
+#
+#server:
+#  port: ${PORT:8080}
+#  servlet:
+#    context-path: /journal

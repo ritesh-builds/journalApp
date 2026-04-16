@@ -1,4 +1,4 @@
-package com.edigest.journalApp.service;
+package com.edigest.journalApp.cron;
 
 import com.edigest.journalApp.scheduler.UserScheduler;
 import org.junit.jupiter.api.Test;

@@ -1,0 +1,13 @@
+#spring.application.name=Journal App
+#spring.mongodb.uri=
+#spring.mongodb.database=journaldb
+#spring.data.mongodb.auto-index-creation=true
+
+
+spring:
+  profiles:
+    active: prod
+
+
+#weather_api_key: 10a588c460664859a3c72601260304
+

@@ -21,7 +21,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableScheduling
 @EnableKafka
 @EnableMongoRepositories(basePackages = "com.edigest.journalApp.repository") // Add this line
-@OpenAPIDefinition(servers = {@Server(url = "/journal", description = "Default Server URL")})
+//@OpenAPIDefinition(servers = {@Server(url = "/journal", description = "Default Server URL")})
 public class JournalApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(JournalApplication.class, args);

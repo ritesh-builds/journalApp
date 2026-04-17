@@ -4,6 +4,7 @@ import com.edigest.journalApp.entity.User;
 import com.edigest.journalApp.service.UserDetailsServiceImpl;
 import com.edigest.journalApp.service.UserService;
 import com.edigest.journalApp.utils.JwtUtil;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/public")
+@Tag(name = "Journal Public API's")
 public class PublicController {
 
     @Autowired
@@ -37,8 +39,13 @@ public class PublicController {
     }
 
     @PostMapping("/signup")
-    public void signup(@RequestBody User user) {
-        userService.saveNewUser(user);  // saveEntry → saveNewUser
+    public void signup(@RequestBody com.edigest.journalApp.dto.UserDTO user) {
+        User newUser = new User();
+        newUser.setEmail(user.getEmail());
+        newUser.setPassword(user.getPassword());
+        newUser.setUserName(user.getUserName());
+        newUser.setSentimentAnalysis(user.getSentimentAnalysis());
+        userService.saveNewUser(newUser);  // saveEntry → saveNewUser
     }
 
     @PostMapping("/login")

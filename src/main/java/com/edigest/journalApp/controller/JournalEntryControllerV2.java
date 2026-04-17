@@ -4,6 +4,7 @@ import com.edigest.journalApp.entity.JournalEntry;
 import com.edigest.journalApp.entity.User;
 import com.edigest.journalApp.service.JournalEntryService;
 import com.edigest.journalApp.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/journal")
+@Tag(name = "Controller Services", description = "getAllJournalEntriesOfUser, createEntry, getJournalEntryById, deleteJournalEntryById, updateJournalById")
 public class JournalEntryControllerV2 {
 
     @Autowired

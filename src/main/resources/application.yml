@@ -9,5 +9,5 @@ spring:
     active: prod
 
 
-#weather_api_key: 10a588c460664859a3c72601260304
+
 
